@@ -9,7 +9,7 @@ Using «Growing Tree» algorithm.
 3. Put starting cell to *list*
 4. While *list* is not empty do:  
 5. Pick cell from *list* (`selected_cell`)
-6. Check if `selected_cell` has at least one "unvisited" neighbor. If no – remove cell from list and go back to step 5. 
+6. Check if `selected_cell` has at least one "unvisited" neighbor. If no – remove cell from list and go back to step 5.
 7. Pick "unvisited" `neighbor` cell and set passage from current cell to selected neighbor. 
 8. Check do this `neighbor` has any "unvisited" neighbors, if yes add `neighbor` to *list*
 9. Check if `selected_cell` has any "unvisited" neighbors, if no - remove `selected_cell` from list
@@ -100,3 +100,18 @@ Passages only
     4┄┄5┄┄6    4──5┄┄6    ▫┄┄▫┄┄▫
     ┊  ┊  ┊    ┊  │  │    ┊  ┊  ┊
     7┄┄8┄┄9    7──8──9    ▫┄┄▫┄┄▫
+
+
+
+### Grid Steps
+
+#### Rectangular Grid step
+
+By default using 1.
+
+#### Hex Grid Steps
+
+Horizontal-straight grids:
+
+    ⬡⬡⬡  
+     ⬡⬡⬡

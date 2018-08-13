@@ -6,21 +6,40 @@
         xmlns:local="clr-namespace:Maze002"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Visibility x:Key="Visibility1">Visible</Visibility>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="1" PanningMode="Both" HorizontalScrollBarVisibility="Visible" VerticalContentAlignment="Center">
-            <Canvas x:Name="Canvas" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <!--<Canvas x:Name="Canvas" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"  />-->
+            <Grid x:Name="Grd" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.5,0.5">
 
-            </Canvas>
+                <Rectangle Width="10" Height="10" Fill="Aqua" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0" Margin="-5,-5,0,0" />
+                <Rectangle Width="10" Height="10" Fill="Aqua" Margin="20,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{DynamicResource Visibility1}" />
+                <Rectangle Width="10" Height="10" Fill="Aqua" Margin="20,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="{DynamicResource Visibility1}"/>
+            </Grid>
         </ScrollViewer>
         <Grid Grid.Column="0">
             <StackPanel>
-                <TextBox>5</TextBox>
-                <TextBox>5</TextBox>
                 <Button Click="Button_Click">Go</Button>
+                <Button Click="Button_Click_1">11</Button>
+                <TabControl >
+                    <TabItem Header="Rect">
+                        <StackPanel>
+                            <Label Target="{Binding ElementName=tbWidth}" >Number of Cells in row</Label>
+                            <TextBox x:Name="tbWidth">5</TextBox>
+                            <Label Target="{Binding ElementName=tbHeight}" >Number of rows</Label>
+                            <TextBox x:Name="tbHeight">5</TextBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Hex">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
             </StackPanel>
         </Grid>
     </Grid>

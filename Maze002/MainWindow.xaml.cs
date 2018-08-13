@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using Mazes;
-
+using Maze002.ViewModels;
 namespace Maze002
 {
     /// <summary>
@@ -22,6 +22,8 @@ namespace Maze002
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public CellStyleVM cellStyle = new CellStyleVM() { HexFill = "Cyan", SimpleSize = 10 };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,9 +36,14 @@ namespace Maze002
             foreach (var item in maze.Cells)
             {
                 Ellipse ell = new Ellipse() { Width = 10, Height = 10, Fill = new SolidColorBrush(Colors.Black) };
-                Canvas.SetLeft(ell, item.Position.X-5);
-                Canvas.SetTop(ell, item.Position.Y-5);
-                Canvas.Children.Add(ell);
+                //Canvas.SetLeft(ell, item.Position.X-5);
+                //Canvas.SetTop(ell, item.Position.Y-5);
+                //Canvas.Children.Add(ell);
+                ell.Margin = new Thickness(item.Position.X, item.Position.Y, 0, 0);
+                ell.VerticalAlignment = VerticalAlignment.Top;
+                ell.HorizontalAlignment = HorizontalAlignment.Left;
+                Grd.Children.Add(ell);
+                //Grid.SetRow(ell, 0);
             }
 
             foreach (var item in maze.Passages)
@@ -49,9 +56,17 @@ namespace Maze002
                 ln.Y2 = (item.Cell2 as Cell).Position.Y;
                 ln.Stroke = new SolidColorBrush(item.IsOpen ? Colors.Blue : Colors.Navy);
                 ln.StrokeThickness = 3;
-                Canvas.Children.Add(ln);
+                Grd.Children.Add(ln);
+                //Canvas.Children.Add(ln);
             }
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Visibility v = (Visibility)this.Resources["Visibility1"];
+            v = v == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+            this.Resources["Visibility1"] = v;
         }
     }
 }
